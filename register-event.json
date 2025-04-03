@@ -1,0 +1,32 @@
+{
+    "name": "RegisterEvent",
+    "description": "Registers a new event in ServiceNow's Event Registry to enable triggering for notifications or other actions.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "event_name": {
+          "type": "string",
+          "description": "The unique name of the event to be registered."
+        },
+        "table_name": {
+          "type": "string",
+          "description": "The name of the table associated with the event."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the event."
+        }
+      },
+      "required": ["event_name", "table_name", "description"]
+    },
+    "returns": {
+      "type": "object",
+      "properties": {
+        "status_message": {
+          "type": "string",
+          "description": "Message indicating whether the event registration was successful or not."
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,5 @@
+{
+    "hasAccess": true,
+    "status_message": "The user with the 'admin' role has access to perform 'read', 'write', and 'create' operations on the 'sp_widget' table. No additional role requirements or restrictions found."
+  }
+  

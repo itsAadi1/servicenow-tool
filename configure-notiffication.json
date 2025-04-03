@@ -1,0 +1,63 @@
+{
+    "name": "ConfigureNotification",
+    "description": "Configures a notification in ServiceNow that is triggered when an event occurs.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the notification.",
+          "minLength": 1
+        },
+        "table": {
+          "type": "string",
+          "description": "The table associated with the notification.",
+          "minLength": 1
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Indicates whether the notification is active."
+        },
+        "event_name": {
+          "type": "string",
+          "description": "The name of the event that triggers this notification.",
+          "minLength": 1
+        },
+        "condition": {
+          "type": "string",
+          "description": "An optional condition that must be met for the notification to be sent."
+        },
+        "recipients": {
+          "type": "array",
+          "description": "A list of recipients who will receive the notification.",
+          "items": {
+            "type": "string",
+            "description": "A user or group field reference (e.g., 'u_student').",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "subject": {
+          "type": "string",
+          "description": "The subject line of the notification.",
+          "minLength": 1
+        },
+        "message": {
+          "type": "string",
+          "description": "The body of the notification, supporting dynamic placeholders.",
+          "minLength": 1
+        }
+      },
+      "required": ["name", "table", "active", "event_name", "recipients", "subject", "message"]
+    },
+    "returns": {
+      "type": "object",
+      "properties": {
+        "status_message": {
+          "type": "string",
+          "description": "Message indicating whether the notification configuration was successful or not."
+        }
+      }
+    }
+  }
+  

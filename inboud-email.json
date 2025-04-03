@@ -1,0 +1,50 @@
+{
+    "name": "CreateInboundEmailAction",
+    "description": "Creates an Inbound Email Action in ServiceNow.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "email_action_name": {
+          "type": "string",
+          "description": "The name of the Inbound Email Action.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "table": {
+          "type": "string",
+          "description": "The table to which the email action applies (e.g., sys_email).",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "action_type": {
+          "type": "string",
+          "description": "The type of action (e.g., Reply, Create Record, etc.).",
+          "enum": ["Reply", "Create Record", "Update Record"],
+          "default": "Reply"
+        },
+        "condition": {
+          "type": "string",
+          "description": "The condition for when the email action should trigger (e.g., email.from.endsWith('@labresults.com')).",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "script": {
+          "type": "string",
+          "description": "The script that is executed when the condition is met.",
+          "minLength": 1,
+          "maxLength": 5000
+        }
+      },
+      "required": ["email_action_name", "table", "condition", "script"]
+    },
+    "returns": {
+      "type": "object",
+      "properties": {
+        "status_message": {
+          "type": "string",
+          "description": "Message indicating whether the Inbound Email Action creation was successful or not."
+        }
+      }
+    }
+  }
+  

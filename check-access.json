@@ -1,0 +1,42 @@
+{
+    "name": "CheckAccessControl",
+    "description": "Checks if the current user has access to perform operations (read, write, create) on the sp_widget table.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "type": "string",
+          "description": "The table name on which the access control is being checked.",
+          "minLength": 1
+        },
+        "operation": {
+          "type": "string",
+          "description": "The operation being checked (read, write, create).",
+          "enum": ["read", "write", "create"],
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "description": "The role of the user requesting the access check.",
+          "minLength": 1
+        }
+      },
+      "required": ["table", "operation", "role"]
+    },
+    "returns": {
+      "type": "object",
+      "description": "Details about the access control check status.",
+      "properties": {
+        "hasAccess": {
+          "type": "boolean",
+          "description": "Indicates whether the user has the required access to perform the operation."
+        },
+        "status_message": {
+          "type": "string",
+          "description": "A message describing whether access is granted or denied, and any restrictions or role requirements."
+        }
+      },
+      "required": ["hasAccess", "status_message"]
+    }
+  }
+  

@@ -1,0 +1,50 @@
+{
+    "name": "CreateClientScript",
+    "description": "Creates a Client Script in ServiceNow",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "script_name": {
+          "type": "string",
+          "description": "The name of the Client Script.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "table": {
+          "type": "string",
+          "description": "The table on which the Client Script is applied.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of Client Script (e.g., onLoad, onChange).",
+          "enum": ["onLoad", "onChange", "onSubmit", "onCellEdit"],
+          "default": "onLoad"
+        },
+        "ui_type": {
+          "type": "string",
+          "description": "The UI type for the script (e.g., Desktop, All).",
+          "enum": ["Desktop", "All"],
+          "default": "Desktop"
+        },
+        "script": {
+          "type": "string",
+          "description": "The client script code.",
+          "minLength": 1,
+          "maxLength": 5000
+        }
+      },
+      "required": ["script_name", "table", "script"]
+    },
+    "returns": {
+      "type": "object",
+      "properties": {
+        "status_message": {
+          "type": "string",
+          "description": "Message indicating whether the Client Script creation was successful or not."
+        }
+      }
+    }
+  }
+  

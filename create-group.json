@@ -1,0 +1,45 @@
+{
+    "name": "CreateGroup",
+    "description": "Creates a new group in ServiceNow for property management team notifications.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "group_name": {
+          "type": "string",
+          "description": "The name of the group.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the group.",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "manager": {
+          "type": "string",
+          "description": "The sys_id of the user who will manage the group (optional)."
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Whether the group is active. Default is true.",
+          "default": true
+        }
+      },
+      "required": ["group_name", "description"]
+    },
+    "returns": {
+      "type": "object",
+      "properties": {
+        "status_message": {
+          "type": "string",
+          "description": "Indicates whether the group creation was successful."
+        },
+        "sys_id": {
+          "type": "string",
+          "description": "The sys_id of the created group."
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,49 @@
+{
+    "name": "CreateScriptInclude",
+    "description": "Creates a Script Include in ServiceNow",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "script_include_name": {
+          "type": "string",
+          "description": "The name of the Script Include.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the Script Include.",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "script": {
+          "type": "string",
+          "description": "The server-side script for the Script Include.",
+          "minLength": 1,
+          "maxLength": 5000
+        },
+        "application": {
+          "type": "string",
+          "description": "The application scope in which the Script Include is created.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "client_callable": {
+          "type": "boolean",
+          "description": "Whether the Script Include is callable from the client-side. Default is true.",
+          "default": true
+        }
+      },
+      "required": ["script_include_name", "description", "script", "application"]
+    },
+    "returns": {
+      "type": "object",
+      "properties": {
+        "status_message": {
+          "type": "string",
+          "description": "Message indicating whether the Script Include creation was successful or not."
+        }
+      }
+    }
+  }
+  

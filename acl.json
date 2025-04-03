@@ -1,0 +1,50 @@
+{
+    "name": "ConfigureACL",
+    "description": "Creates Access Control (ACL) rules in ServiceNow to manage data access.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "type": "string",
+          "description": "The name of the table for which the ACL is being created.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "operation": {
+          "type": "string",
+          "description": "The operation type for the ACL (read, write, create, delete, etc.).",
+          "enum": ["read", "write", "create", "delete"]
+        },
+        "requires_role": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of roles required to pass the ACL check."
+        },
+        "condition": {
+          "type": "string",
+          "description": "A condition for the ACL, if any. Leave blank if not needed.",
+          "maxLength": 500,
+          "default": ""
+        },
+        "script": {
+          "type": "string",
+          "description": "An optional script to define additional ACL logic.",
+          "maxLength": 5000,
+          "default": ""
+        }
+      },
+      "required": ["table", "operation", "requires_role"]
+    },
+    "returns": {
+      "type": "object",
+      "properties": {
+        "status_message": {
+          "type": "string",
+          "description": "Message indicating whether the ACL configuration was successful or not."
+        }
+      }
+    }
+  }
+  

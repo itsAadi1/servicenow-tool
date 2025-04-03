@@ -1,0 +1,67 @@
+{
+    "name": "CreateBusinessRule",
+    "description": "Creates a Business Rule in ServiceNow",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "business_rule_name": {
+          "type": "string",
+          "description": "The name of the Business Rule.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "table": {
+          "type": "string",
+          "description": "The table on which the Business Rule is applied.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "when_to_run": {
+          "type": "string",
+          "enum": [
+            "before",
+            "after",
+            "async"
+          ],
+          "description": "When the Business Rule runs (before, after, or async)."
+        },
+        "insert": {
+          "type": "boolean",
+          "description": "Whether the Business Rule runs on record updates."
+        },
+        "update": {
+          "type": "boolean",
+          "description": "Whether the Business Rule runs on record updates."
+        },
+        "condition": {
+          "type": "string",
+          "description": "The condition that must be met for the Business Rule to execute.",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "script": {
+          "type": "string",
+          "description": "The server-side script executed by the Business Rule.",
+          "minLength": 1,
+          "maxLength": 5000
+        }
+      },
+      "required": [
+        "business_rule_name",
+        "table",
+        "when_to_run",
+        "update",
+        "condition",
+        "script"
+      ]
+    },
+    "returns": {
+      "type": "object",
+      "properties": {
+        "status_message": {
+          "type": "string",
+          "description": "Message indicating whether the Business Rule creation was successful or not."
+        }
+      }
+    }
+  }

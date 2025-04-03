@@ -1,0 +1,62 @@
+{
+    "name": "ConfigureServiceNowWidget",
+    "description": "Creates and configures a widget in ServiceNow to display transaction history.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "widget_name": {
+          "type": "string",
+          "description": "The display name of the widget.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "widget_id": {
+          "type": "string",
+          "description": "The unique system-generated ID of the widget.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the widget.",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "html_template": {
+          "type": "string",
+          "description": "The HTML template code for rendering the widget.",
+          "minLength": 1,
+          "maxLength": 10000
+        },
+        "server_script": {
+          "type": "string",
+          "description": "The server-side script for processing widget logic.",
+          "minLength": 1,
+          "maxLength": 10000
+        },
+        "client_script": {
+          "type": "string",
+          "description": "The optional client-side script for additional interactivity.",
+          "minLength": 0,
+          "maxLength": 10000
+        },
+        "css": {
+          "type": "string",
+          "description": "The optional CSS styles for customizing the widget appearance.",
+          "minLength": 0,
+          "maxLength": 5000
+        }
+      },
+      "required": ["widget_name", "widget_id", "description", "html_template", "server_script"]
+    },
+    "returns": {
+      "type": "object",
+      "properties": {
+        "status_message": {
+          "type": "string",
+          "description": "Indicates whether the widget configuration was successful."
+        }
+      }
+    }
+  }
+  
