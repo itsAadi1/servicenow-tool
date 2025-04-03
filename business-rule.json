@@ -27,11 +27,15 @@
         },
         "insert": {
           "type": "boolean",
-          "description": "Whether the Business Rule runs on record updates."
+          "description": "Whether the Business Rule runs on record insert."
         },
         "update": {
           "type": "boolean",
           "description": "Whether the Business Rule runs on record updates."
+        },
+         "delete": {
+          "type": "boolean",
+          "description": "Whether the Business Rule runs on record delete."
         },
         "condition": {
           "type": "string",
