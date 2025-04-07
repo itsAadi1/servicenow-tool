@@ -1,48 +1,64 @@
 {
-    "name": "CreateScheduledJob",
-    "description": "Creates a Scheduled Job in ServiceNow",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "job_name": {
-          "type": "string",
-          "description": "The name of the Scheduled Job.",
-          "minLength": 1,
-          "maxLength": 100
-        },
-        "run": {
-          "type": "string",
-          "description": "The schedule type for the job (e.g., daily, weekly, periodically).",
-          "enum": ["daily", "weekly", "periodically"]
-        },
-        "run_time": {
-          "type": "string",
-          "description": "The time at which the Scheduled Job runs (HH:mm:ss format).",
-          "pattern": "^([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$"
-        },
-        "script": {
-          "type": "string",
-          "description": "The script to be executed when the job runs.",
-          "minLength": 1,
-          "maxLength": 5000
-        },
-        "application": {
-          "type": "string",
-          "description": "The application scope in which the Scheduled Job is created.",
-          "minLength": 1,
-          "maxLength": 100
-        }
+  "name": "CreateScheduledJob",
+  "description": "Creates a Scheduled Job in ServiceNow",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "job_name": {
+        "type": "string",
+        "description": "The name of the Scheduled Job.",
+        "minLength": 1,
+        "maxLength": 100
       },
-      "required": ["job_name", "run", "run_time", "script", "application"]
+      "run": {
+        "type": "string",
+        "description": "The schedule type for the job (e.g., daily, weekly, periodically).",
+        "enum": [
+          "daily",
+          "weekly",
+          "periodically"
+        ]
+      },
+      "run_time": {
+        "type": "string",
+        "description": "The time at which the Scheduled Job runs (HH:mm:ss format).",
+        "pattern": "^([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$"
+      },
+      "repeatInterval":{
+        "type":"string",
+        "description":"repeat interval of job"
+      },
+      "startTime":{
+        "type":"string",
+        "description":"time from which shcedule job should come into effect"
+      },
+      "script": {
+        "type": "string",
+        "description": "The script to be executed when the job runs.",
+        "minLength": 1,
+        "maxLength": 5000
+      },
+      "application": {
+        "type": "string",
+        "description": "The application scope in which the Scheduled Job is created.",
+        "minLength": 1,
+        "maxLength": 100
+      }
     },
-    "returns": {
-      "type": "object",
-      "properties": {
-        "status_message": {
-          "type": "string",
-          "description": "Message indicating whether the Scheduled Job creation was successful or not."
-        }
+    "required": [
+      "job_name",
+      "run",
+      "script",
+      "application"
+    ]
+  },
+  "returns": {
+    "type": "object",
+    "properties": {
+      "status_message": {
+        "type": "string",
+        "description": "Message indicating whether the Scheduled Job creation was successful or not."
       }
     }
   }
-  
+}
