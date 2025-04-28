@@ -1,0 +1,75 @@
+{
+  "name": "CreateUIAction",
+  "description": "Creates a UI Action in ServiceNow",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "action_name": {
+        "type": "string",
+        "description": "The unique Action name of the UI Action.",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "table": {
+        "type": "string",
+        "description": "The table on which the UI Action is applied.",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "button_label": {
+        "type": "string",
+        "description": "Label that appears on the button."
+      },
+      "active": {
+        "type": "boolean",
+        "description": "Whether the UI Action is active."
+      },
+      "show_insert": {
+        "type": "boolean",
+        "description": "Whether the UI Action should appear on record insert."
+      },
+      "show_update": {
+        "type": "boolean",
+        "description": "Whether the UI Action should appear on record update."
+      },
+      "form_button": {
+        "type": "boolean",
+        "description": "Whether the UI Action should display as a form button."
+      },
+      "client": {
+        "type": "boolean",
+        "description": "Whether the script runs on the client side."
+      },
+      "condition": {
+        "type": "string",
+        "description": "Condition under which the button is visible."
+      },
+      "script": {
+        "type": "string",
+        "description": "The script code that will execute when the UI Action is triggered.",
+        "minLength": 1,
+        "maxLength": 5000
+      }
+    },
+    "required": [
+      "action_name",
+      "table",
+      "button_label",
+      "active",
+      "show_insert",
+      "show_update",
+      "form_button",
+      "client",
+      "script"
+    ]
+  },
+  "returns": {
+    "type": "object",
+    "properties": {
+      "status_message": {
+        "type": "string",
+        "description": "Message indicating whether the UI Action creation was successful or not."
+      }
+    }
+  }
+}
